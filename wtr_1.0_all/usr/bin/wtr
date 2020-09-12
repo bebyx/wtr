@@ -1,0 +1,30 @@
+#!/bin/sh
+
+if [ "$1" = "" ]; then
+  curl wttr.in/?format=1
+  exit
+fi
+
+get_help="$(tput bold)wtr$(tput sgr0) is a simple CLI-app to check the weather.\n
+Run $(tput bold)wtr$(tput sgr0) to get current weather in your location.
+Run $(tput bold)wtr -w$(tput sgr0) to get current weather with wind speed.
+Run $(tput bold)wtr -v$(tput sgr0) to get verbose data along with the weather.
+Run $(tput bold)wtr -h$(tput sgr0) to get a list of arguments. (You probably already know that.)
+"
+
+# -w -- with wind
+# -v -- verbose
+case $1 in
+    -w | --wind )
+                curl wttr.in/?format=2
+                ;;
+    -v | --verbose )
+                curl wttr.in/?format="%c+%t+🌬️%w+%m(%M)+🎈%P\n"
+                ;;
+    -h | --help )
+                echo "$get_help"
+                ;;
+    * )
+                echo "Unknown argument"
+                exit 1
+esac

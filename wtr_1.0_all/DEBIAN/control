@@ -1,0 +1,8 @@
+Package: wtr
+Version: 1.0
+Architecture: all
+Essential: no
+Priority: optional
+Depends: curl
+Maintainer: bebyx<bebyx@protonmail.com>
+Description: wtr is a simple CLI-app to check the weather.
